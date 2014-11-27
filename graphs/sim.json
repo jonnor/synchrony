@@ -1,0 +1,89 @@
+{
+    "properties": {
+        "name": "sim",
+        "environment": {
+            "type": "noflo-browser",
+            "content": "<label for=fader>Freq</label>\n<input type=range min=20 max=1000 value=400 id=fader step=1>\n<output for=fader id=volume>400</output>"
+        },
+        "icon": ""
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "interaction/ListenChange_4qrtj": {
+            "component": "interaction/ListenChange",
+            "metadata": {
+                "label": "interaction/ListenChange",
+                "x": 324,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Output_num09": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 504,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_dygf": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "dom/GetElement",
+                "x": 144,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "interaction/ListenChange_4qrtj",
+                "port": "value"
+            },
+            "tgt": {
+                "process": "core/Output_num09",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_dygf",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "interaction/ListenChange_4qrtj",
+                "port": "element"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_dygf",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "core/Output_num09",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "data": "#fader",
+            "tgt": {
+                "process": "dom/GetElement_dygf",
+                "port": "selector"
+            }
+        }
+    ]
+}
