@@ -20,7 +20,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "noflo": "~0.5.0"
+    "noflo": "~0.5.0",
+    "simple-server": "^1.0.1"
   },
   "devDependencies": {
     "chai": "~1.9.0",
