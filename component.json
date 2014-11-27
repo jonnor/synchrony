@@ -11,7 +11,8 @@
     "noflo/noflo-core": "*",
     "noflo/noflo-interaction": "*",
     "noflo/noflo-runtime-webrtc": "*",
-    "noflo/noflo-runtime-iframe": "*"
+    "noflo/noflo-runtime-iframe": "*",
+    "noflo/noflo-runtime": "*"
   },
   "remotes": [
     "https://raw.githubusercontent.com"
@@ -19,15 +20,18 @@
   "scripts": [
     "index.js",
     "components/DoSomething.coffee",
-    "graphs/main.json"
+    "graphs/main.json",
+    "graphs/sim.json"
   ],
   "json": [
     "graphs/main.json",
-    "component.json"
+    "component.json",
+    "graphs/sim.json"
   ],
   "noflo": {
     "graphs": {
-      "main": "graphs/main.json"
+      "main": "graphs/main.json",
+      "sim": "graphs/sim.json"
     },
     "components": {
       "DoSomething": "components/DoSomething.coffee"
