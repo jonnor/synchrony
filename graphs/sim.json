@@ -3,7 +3,7 @@
         "name": "sim",
         "environment": {
             "type": "noflo-browser",
-            "content": "<label for=fader>Freq</label>\n<input type=range min=20 max=1000 value=400 id=fader step=1>\n<output for=fader id=volume>400</output>"
+            "content": "<label for=fader1>Freq 1</label>\n<input type=range min=20 max=1000 value=400 id=fader1 step=1>\n<output for=fader1 id=out1>400</output>\n\n<label for=fader2>Freq 2</label>\n<input type=range min=20 max=1000 value=400 id=fader2 step=1>\n<output for=fader2 id=out2>400</output>\n\n<style type=\"text/css\">\nbody {color: white; background: black;}\n</style>"
         },
         "icon": ""
     },
@@ -11,12 +11,12 @@
     "outports": {},
     "groups": [],
     "processes": {
-        "interaction/ListenChange_4qrtj": {
+        "change_3kiu0": {
             "component": "interaction/ListenChange",
             "metadata": {
-                "label": "interaction/ListenChange",
-                "x": 324,
-                "y": 72,
+                "label": "change",
+                "x": 360,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -25,8 +25,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "core/Output",
-                "x": 504,
-                "y": 180,
+                "x": 360,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -35,8 +35,8 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "dom/GetElement",
-                "x": 216,
-                "y": 180,
+                "x": 180,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -50,27 +50,36 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "dom/GetElement_m8cjb": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "dom/GetElement",
+                "x": 180,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "change": {
+            "component": "interaction/ListenChange",
+            "metadata": {
+                "label": "change",
+                "x": 360,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "connections": [
-        {
-            "src": {
-                "process": "interaction/ListenChange_4qrtj",
-                "port": "value"
-            },
-            "tgt": {
-                "process": "core/Output_num09",
-                "port": "in"
-            },
-            "metadata": {}
-        },
         {
             "src": {
                 "process": "dom/GetElement_dygf",
                 "port": "element"
             },
             "tgt": {
-                "process": "interaction/ListenChange_4qrtj",
+                "process": "change_3kiu0",
                 "port": "element"
             },
             "metadata": {}
@@ -90,7 +99,7 @@
         },
         {
             "src": {
-                "process": "interaction/ListenChange_4qrtj",
+                "process": "change_3kiu0",
                 "port": "value"
             },
             "tgt": {
@@ -102,9 +111,51 @@
             }
         },
         {
-            "data": "#fader",
+            "src": {
+                "process": "dom/GetElement_m8cjb",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "change",
+                "port": "element"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_m8cjb",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "core/Output_num09",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "change",
+                "port": "value"
+            },
+            "tgt": {
+                "process": "runtime/synth_mxxk6",
+                "port": "freq"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "#fader1",
             "tgt": {
                 "process": "dom/GetElement_dygf",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#fader2",
+            "tgt": {
+                "process": "dom/GetElement_m8cjb",
                 "port": "selector"
             }
         }
