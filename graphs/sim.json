@@ -3,7 +3,7 @@
         "name": "sim",
         "environment": {
             "type": "noflo-browser",
-            "content": "<label for=fader1>Freq 1</label>\n<input type=range min=20 max=1000 value=400 id=fader1 step=1>\n<output for=fader1 id=out1>400</output>\n\n<label for=fader2>Freq 2</label>\n<input type=range min=20 max=1000 value=400 id=fader2 step=1>\n<output for=fader2 id=out2>400</output>\n\n<style type=\"text/css\">\nbody {color: white; background: black;}\n</style>"
+            "content": "<canvas id=\"canvas\" width=\"200\" height=\"200\"></canvas>\n\n<label for=fader1>Freq 1</label>\n<input type=range min=20 max=1000 value=400 id=fader1 step=1>\n<output for=fader1 id=out1>400</output>\n\n<label for=fader2>Freq 2</label>\n<input type=range min=20 max=1000 value=400 id=fader2 step=1>\n<output for=fader2 id=out2>400</output>\n\n<style type=\"text/css\">\nbody {color: white; background: black;}\n</style>"
         },
         "icon": ""
     },
@@ -45,7 +45,7 @@
             "component": "runtime/synth",
             "metadata": {
                 "label": "runtime/synth",
-                "x": 504,
+                "x": 540,
                 "y": 36,
                 "width": 72,
                 "height": 72
@@ -67,6 +67,66 @@
                 "label": "change",
                 "x": 360,
                 "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_m20ux": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "dom/GetElement",
+                "x": 180,
+                "y": -180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/Listen_hvor8": {
+            "component": "dom/Listen",
+            "metadata": {
+                "label": "dom/Listen",
+                "x": 360,
+                "y": -252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "interaction/ReadCoordinates_lwhor": {
+            "component": "interaction/ReadCoordinates",
+            "metadata": {
+                "label": "interaction/ReadCoordinates",
+                "x": 576,
+                "y": -216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/MakeFunction_eig9g": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "core/MakeFunction",
+                "x": 756,
+                "y": -216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Output_f0f9o": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 900,
+                "y": -252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/DisconnectAfterPacket_t6lsf": {
+            "component": "core/DisconnectAfterPacket",
+            "metadata": {
+                "label": "core/DisconnectAfterPacket",
+                "x": 504,
+                "y": -324,
                 "width": 72,
                 "height": 72
             }
@@ -146,10 +206,114 @@
             "metadata": {}
         },
         {
+            "src": {
+                "process": "dom/GetElement_m20ux",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/Listen_hvor8",
+                "port": "element"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_m20ux",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "core/Output_num09",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "interaction/ReadCoordinates_lwhor",
+                "port": "client"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_eig9g",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_eig9g",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_f0f9o",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_eig9g",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "core/Output_f0f9o",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "dom/Listen_hvor8",
+                "port": "event"
+            },
+            "tgt": {
+                "process": "core/DisconnectAfterPacket_t6lsf",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "core/DisconnectAfterPacket_t6lsf",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "interaction/ReadCoordinates_lwhor",
+                "port": "event"
+            },
+            "metadata": {}
+        },
+        {
             "data": "#fader1",
             "tgt": {
                 "process": "dom/GetElement_dygf",
                 "port": "selector"
+            }
+        },
+        {
+            "data": "return {\"type\": \"point\", \"x\": x.x, \"y\": x.y};",
+            "tgt": {
+                "process": "core/MakeFunction_eig9g",
+                "port": "function"
+            }
+        },
+        {
+            "data": "#canvas",
+            "tgt": {
+                "process": "dom/GetElement_m20ux",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "click",
+            "tgt": {
+                "process": "dom/Listen_hvor8",
+                "port": "type"
             }
         },
         {
