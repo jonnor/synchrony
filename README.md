@@ -1,6 +1,8 @@
 Synchrony
 =========
-
+Experiements in interactive installations around the topic of synchrony,
+how peoples behavior tend to syncronize, and its effect on perception &
+communication.
 
 References
 -----------
