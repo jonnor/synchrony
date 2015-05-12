@@ -20,6 +20,8 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "microflo": "^0.3.28",
+    "microflo-core": "^0.3.31",
     "noflo": "~0.5.0",
     "simple-server": "^1.0.1"
   },
