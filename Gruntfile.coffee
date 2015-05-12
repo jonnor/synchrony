@@ -2,7 +2,7 @@ microflo = (target) ->
     build = [
         "make -f ./node_modules/microflo/Makefile"
         target
-        "BUILD_DIR=build"
+        "BUILD_DIR=#{process.cwd()}/build"
         "MICROFLO=./node_modules/.bin/microflo"
         "GRAPH=graphs/microsynchro.fbp"
         "MICROFLO_SOURCE_DIR=`pwd`/node_modules/microflo/microflo"

@@ -4,7 +4,7 @@ OUTPORT=led0f.OUT:LED1
 OUTPORT=sensor0f.OUT:DISTANCE_NORTH
 
 # Distance sensors
-'true' -> ENABLE timer(Timer)
+'true' -> RESET timer(Timer)
 timer OUT -> TRIGGER sensor0(UltrasoundSR04) DISTANCE -> IN sensor0f(Forward)
 
 # LEDs
