@@ -1,3 +1,14 @@
+microflo = (target) ->
+    build = [
+        "make -f ./node_modules/microflo/Makefile"
+        target
+        "BUILD_DIR=build"
+        "MICROFLO=./node_modules/.bin/microflo"
+        "GRAPH=graphs/microsynchro.fbp"
+        "MICROFLO_SOURCE_DIR=`pwd`/node_modules/microflo/microflo"
+    ]
+    return build.join ' '
+
 module.exports = ->
   # Project configuration
   pkg = @file.readJSON 'package.json'
@@ -5,6 +16,11 @@ module.exports = ->
 
   @initConfig
     pkg: @file.readJSON 'package.json'
+
+    # MicroFlo
+    exec:
+      microflo_emscripten: microflo "build-emscripten"
+      microflo_arduino: microflo "build-arduino"
 
     # Updating the package manifest files
     noflo_manifest:
@@ -97,6 +113,7 @@ module.exports = ->
   @loadNpmTasks 'grunt-cafe-mocha'
   @loadNpmTasks 'grunt-mocha-phantomjs'
   @loadNpmTasks 'grunt-coffeelint'
+  @loadNpmTasks 'grunt-exec'
 
   # Grunt plugins used for deploying
   @loadNpmTasks 'grunt-gh-pages'
