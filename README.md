@@ -4,6 +4,9 @@ Experiements in interactive installations around the topic of synchrony,
 how peoples behavior tend to syncronize, and its effect on perception &
 communication.
 
+Prepared for a workshop at [Do It Anyway festival](http://www.opensourcingfestivals.eu/events/do-it-anyway-festival-sheffield-uk)
+around [Flowhub](http://flowhub.io), [MicroFlo](http://microflo) and [sndflo](http://github.com/jonnor/sndflo).
+
 References
 -----------
 
