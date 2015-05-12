@@ -124,9 +124,9 @@ module.exports = ->
     if not fs.existsSync 'thirdparty'
         # TEMP HACK
         fs.symlinkSync 'node_modules/microflo/thirdparty', 'thirdparty'
-    if target is 'all' or 'emscripten'
+    if target in ['all', 'emscripten']
       @task.run 'exec:microflo_emscripten'
-    if target is 'all' or 'arduino'
+    if target in ['all', 'arduino']
       @task.run 'exec:microflo_arduino'
 
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
