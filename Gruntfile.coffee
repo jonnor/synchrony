@@ -119,17 +119,26 @@ module.exports = ->
   @loadNpmTasks 'grunt-gh-pages'
 
   # Our local tasks
+  @registerTask 'build:microflo', '', (target = 'all') =>
+    fs = require 'fs'
+    if not fs.existsSync 'thirdparty'
+        # TEMP HACK
+        fs.symlinkSync 'node_modules/microflo/thirdparty', 'thirdparty'
+    if target is 'all' or 'emscripten'
+      @task.run 'exec:microflo_emscripten'
+    if target is 'all' or 'arduino'
+      @task.run 'exec:microflo_arduino'
+
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
-    @task.run 'coffee'
-    @task.run 'noflo_manifest'
+    if target is 'all' or target is 'browser' or target is 'nodejs'
+      @task.run 'coffee'
+      @task.run 'noflo_manifest'
     if target is 'all' or target is 'browser'
       @task.run 'noflo_browser'
       @task.run 'uglify'
 
   @registerTask 'test', 'Build NoFlo and run automated tests', (target = 'all') =>
-    @task.run 'coffeelint'
-    @task.run 'coffee'
-    @task.run 'noflo_manifest'
+    @task.run "build:#{target}"
     if target is 'all' or target is 'nodejs'
       @task.run 'cafemocha'
     if target is 'all' or target is 'browser'
