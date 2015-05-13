@@ -7,8 +7,23 @@ communication.
 Prepared for a workshop at [Do It Anyway festival](http://www.opensourcingfestivals.eu/events/do-it-anyway-festival-sheffield-uk)
 around [Flowhub](http://flowhub.io), [MicroFlo](http://microflo) and [sndflo](http://github.com/jonnor/sndflo).
 
-References
------------
+System overview
+---------------
+4 ultrasonic distance sensors.
+A contact speaker with a basin of water mounted on top. Cymatics display.
+An array of LEDs projecting through the water, onto ceiling, screen or other object.
+
+Arduino to drive LEDs, and perform read-out of distance sensors.
+Raspberry Pi + USB soundcard for sound synthesis.
+RPi also runs the orchestation code, which acts on the sensor inputs and
+controls outputs to form some sort of interactivity.
+
+TODO: picture/3d-model
+TODO: link to interactive simulator
+
+
+Conceptual references
+--------------------
 
 Saying: ["on the same wavelength"](http://www.urbandictionary.com/define.php?term=on+the+same+wavelength)
 
@@ -56,15 +71,66 @@ a different experimenter than the one who instructed them to terminate the insec
 
 
 Personal experience:
+
 If a person is sleeping or resting on your chest,
 and you slow your breathing down or even hold your breath,
 the person will often adopt their breath to match
-(automatically, without voluntary/concious action)
+(automatically, without voluntary/conscious action)
 
 
 "Mirroring" is a derived technique, often used in sales and related fields
-http://sales.about.com/od/glossaryofsalesterms/g/What-Is-Mirroring.htm
-http://www.pickupguide.com/layguide/mirroring.htm
-http://www.wikihow.com/Persuade-People-with-Subconscious-Techniques
-http://lifehacker.com/5894462/use-mirroring-and-matching-to-build-a-good-rapport-and-become-more-persuasive
+
+[Sales: What is Mirroring](http://sales.about.com/od/glossaryofsalesterms/g/What-Is-Mirroring.htm),
+[Pickupguide: Mirroring](http://www.pickupguide.com/layguide/mirroring.htm),
+[WikiHow: Persuade with subconcious techniques](http://www.wikihow.com/Persuade-People-with-Subconscious-Techniques),
+[Lifehacker: Use mirroring and matchin](http://lifehacker.com/5894462/use-mirroring-and-matching-to-build-a-good-rapport-and-become-more-persuasive)
+
+Interaction ideas
+---------------------
+Just a start, for inspiration!
+
+Types of interaction
+
+* Performance
+* Game
+* Installation
+* Number of participants
+
+Sonification effects
+
+* Detuned sines, beating-tone 
+* Triggered samples
+* Granular synthesis
+* Musical
+* Abstract
+* Speech
+* Noise
+
+Visual effects
+
+* Strobing
+* Abrupt cutoffs, thresholds
+* Using LED/section to "point"
+* Weakening
+* Project onto something. A face?
+
+Cymatic effects
+
+* Interference patterns
+* Different fluids: viscocity/coloring?
+* Influences on sound & visuals
+
+Motivations
+------------
+Doing a workshop on interactive art/tech where focus is shifted
+away from "get *something* to work" (with Arduino/RPi)
+over to "testing different expressions/interactions" (of a concept).
+
+Testing interactive simulator for enable multiple people to work independently/parallell,
+and/or without direct access to the hardware.
+
+Pushing MicroFlo, sndflo, NoFlo and Flowhub onwards.
+
+Exploring the idea of "software defined" in interactive/installations:
+The software is what causes it to mean a particular thing.
 
