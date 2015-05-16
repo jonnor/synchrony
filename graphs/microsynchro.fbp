@@ -1,23 +1,50 @@
 
+# Exports
+OUTPORT=sensorN.TRIGGERED:ALIVE
+
 INPORT=led0.IN:LED0
-OUTPORT=led0.OUT:LED0
-OUTPORT=sensor0.DISTANCE:DISTANCE_NORTH
-OUTPORT=sensor0.TRIGGERED:ALIVE
+INPORT=led1.IN:LED1
+INPORT=led2.IN:LED2
+INPORT=led3.IN:LED3
+INPORT=led4.IN:LED4
+INPORT=led5.IN:LED5
+
+# OUTPORT=led0.OUT:LED0
+
+OUTPORT=sensorN.DISTANCE:DISTANCE_NORTH
+OUTPORT=sensorE.DISTANCE:DISTANCE_EAST
+OUTPORT=sensorS.DISTANCE:DISTANCE_SOUTH
+OUTPORT=sensorW.DISTANCE:DISTANCE_WEST
+
 
 # Distance sensors 
-timer(Timer) OUT -> TRIGGER sensor0(UltrasoundSR04)
-sensor0 DISTANCE -> IN sensor0f2(Forward)
-sensor0 TRIGGERED -> IN sensor0f(Forward)
+timer(Timer) OUT -> TRIGGER sensorN(UltrasoundSR04)
+sensorN DISTANCE -> TRIGGER sensorE(UltrasoundSR04)
+sensorE DISTANCE -> TRIGGER sensorS(UltrasoundSR04)
+sensorS DISTANCE -> TRIGGER sensorW(UltrasoundSR04)
+sensorW DISTANCE -> IN sensorNf(Forward) # hack, needed for exporting
 
 # LEDs
 led0(DigitalWrite) OUT -> IN led0f(Forward)
+led1(DigitalWrite) OUT -> IN led1f(Forward)
+led2(DigitalWrite) OUT -> IN led2f(Forward)
+led3(DigitalWrite) OUT -> IN led3f(Forward)
+led4(DigitalWrite) OUT -> IN led4f(Forward)
+led5(DigitalWrite) OUT -> IN led5f(Forward)
 
 # Config
-'3' -> PIN led0
+'3' -> PIN led0, '5' -> PIN led1,
+'6' -> PIN led2, '9' -> PIN led3,
+'10' -> PIN led4, '11' -> PIN led5
 '200' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
-'7' -> TRIGPIN sensor0, '8' -> ECHOPIN sensor0
+'7' -> TRIGPIN sensorN, '8' -> ECHOPIN sensorN
+'15' -> TRIGPIN sensorE, '14' -> ECHOPIN sensorE
+'17' -> TRIGPIN sensorS, '16' -> ECHOPIN sensorS
+'19' -> TRIGPIN sensorW, '18' -> ECHOPIN sensorW
 
 # Debugging
-debugTimer(Timer) OUT -> IN debugToggle(ToggleBoolean) OUT -> IN debugLed(DigitalWrite) OUT -> IN debugF(Forward)
+sensorN TRIGGERED -> IN sensorNf(Forward)
+
+debugTimer(Timer) OUT -> IN debugToggle(ToggleBoolean) OUT -> IN debugLed(DigitalWrite)
 '13' -> PIN debugLed
 '1000' -> INTERVAL debugTimer
