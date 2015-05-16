@@ -1,13 +1,20 @@
+make =   "make -f ./node_modules/microflo/Makefile"
+common_options = [
+  "BUILD_DIR=#{process.cwd()}/build"
+  "MICROFLO=./node_modules/.bin/microflo"
+  "GRAPH=graphs/microsynchro.fbp"
+  "MICROFLO_SOURCE_DIR=`pwd`/node_modules/microflo/microflo"
+]
+
 microflo = (target) ->
-    build = [
-        "make -f ./node_modules/microflo/Makefile"
-        target
-        "BUILD_DIR=#{process.cwd()}/build"
-        "MICROFLO=./node_modules/.bin/microflo"
-        "GRAPH=graphs/microsynchro.fbp"
-        "MICROFLO_SOURCE_DIR=`pwd`/node_modules/microflo/microflo"
-    ]
-    return build.join ' '
+  build = [ make, target ]
+  build = build.concat common_options
+  return build.join ' '
+
+flash = (device) ->
+  build = [ make, "upload", "SERIALPORT=#{device}" ]
+  build = build.concat common_options
+  return build.join ' '
 
 module.exports = ->
   # Project configuration
@@ -21,6 +28,7 @@ module.exports = ->
     exec:
       microflo_emscripten: microflo "build-emscripten"
       microflo_arduino: microflo "build-arduino"
+      microflo_flash: flash '/dev/ttyACM0'
 
     # Updating the package manifest files
     noflo_manifest:
@@ -128,6 +136,9 @@ module.exports = ->
       @task.run 'exec:microflo_emscripten'
     if target in ['all', 'arduino']
       @task.run 'exec:microflo_arduino'
+
+  @registerTask 'flash', '', () =>
+    @task.run 'exec:microflo_flash'
 
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
     if target is 'all' or target is 'browser' or target is 'nodejs'
