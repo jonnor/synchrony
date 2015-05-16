@@ -1,2 +1,3 @@
 
 micro(runtime/Micro) DISTANCE_NORTH -> IN out(core/Output)
+micro ALIVE -> IN out
