@@ -10,7 +10,13 @@ timer OUT -> TRIGGER sensor0(UltrasoundSR04) DISTANCE -> IN sensor0f(Forward)
 # LEDs
 led0(DigitalWrite) OUT -> IN led0f(Forward)
 
+
 # Config
 '3' -> PIN led0
 '120' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
 '7' -> TRIGPIN sensor0, '8' -> ECHOPIN sensor0
+
+# Debugging
+debugTimer(Timer) OUT -> IN debugToggle(ToggleBoolean) OUT -> IN debugLed(DigitalWrite)
+'13' -> PIN debugLed
+'300' -> INTERVAL debugTimer
