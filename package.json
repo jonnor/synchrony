@@ -1,6 +1,6 @@
 {
-  "name": "noflo-browser-app",
-  "description": "The best project ever.",
+  "name": "synchrony",
+  "description": "Installation experiments",
   "version": "0.1.0",
   "author": {
     "name": "Jon Nordby",
@@ -23,6 +23,7 @@
     "microflo": "^0.3.28",
     "microflo-core": "^0.3.31",
     "noflo": "~0.5.0",
+    "noflo-runtime": "^0.1.4",
     "simple-server": "^1.0.1"
   },
   "devDependencies": {
