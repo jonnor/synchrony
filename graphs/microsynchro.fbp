@@ -1,6 +1,8 @@
 
 # Exports
-OUTPORT=sensorN.TRIGGERED:ALIVE
+#OUTPORT=sensorN.TRIGGERED:ALIVE
+OUTPORT=debugLed.OUT:ALIVE
+#OUTPORT=sensorN.DISTANCE:DISTANCE_NORTH
 
 INPORT=led0.IN:LED0
 INPORT=led1.IN:LED1
@@ -16,35 +18,36 @@ OUTPORT=sensorE.DISTANCE:DISTANCE_EAST
 OUTPORT=sensorS.DISTANCE:DISTANCE_SOUTH
 OUTPORT=sensorW.DISTANCE:DISTANCE_WEST
 
-
 # Distance sensors 
 timer(Timer) OUT -> TRIGGER sensorN(UltrasoundSR04)
+#sensorN DISTANCE -> IN sensorNf(Forward) # hack, needed for exporting
 sensorN DISTANCE -> TRIGGER sensorE(UltrasoundSR04)
 sensorE DISTANCE -> TRIGGER sensorS(UltrasoundSR04)
 sensorS DISTANCE -> TRIGGER sensorW(UltrasoundSR04)
-sensorW DISTANCE -> IN sensorNf(Forward) # hack, needed for exporting
+sensorW DISTANCE -> IN sensorWf(Forward) # hack, needed for exporting
+
 
 # LEDs
-led0(DigitalWrite) OUT -> IN led0f(Forward)
-led1(DigitalWrite) OUT -> IN led1f(Forward)
-led2(DigitalWrite) OUT -> IN led2f(Forward)
-led3(DigitalWrite) OUT -> IN led3f(Forward)
-led4(DigitalWrite) OUT -> IN led4f(Forward)
-led5(DigitalWrite) OUT -> IN led5f(Forward)
+'3' -> PIN led0(DigitalWrite)
+'5' -> PIN led1(DigitalWrite)
+'6' -> PIN led2(DigitalWrite)
+'9' -> PIN led3(DigitalWrite)
+'10' -> PIN led4(DigitalWrite)
+'11' -> PIN led5(DigitalWrite)
 
 # Config
-'3' -> PIN led0, '5' -> PIN led1,
-'6' -> PIN led2, '9' -> PIN led3,
-'10' -> PIN led4, '11' -> PIN led5
-'200' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
-'7' -> TRIGPIN sensorN, '8' -> ECHOPIN sensorN
-'15' -> TRIGPIN sensorE, '14' -> ECHOPIN sensorE
-'17' -> TRIGPIN sensorS, '16' -> ECHOPIN sensorS
-'19' -> TRIGPIN sensorW, '18' -> ECHOPIN sensorW
+'1000' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
+'8' -> TRIGPIN sensorN, '7' -> ECHOPIN sensorN
+'19' -> TRIGPIN sensorE, '18' -> ECHOPIN sensorE
+'15' -> TRIGPIN sensorS, '14' -> ECHOPIN sensorS
+'17' -> TRIGPIN sensorW, '16' -> ECHOPIN sensorW
 
 # Debugging
-sensorN TRIGGERED -> IN sensorNf(Forward)
+#sensorN TRIGGERED -> IN sensorNf(Forward)
 
-debugTimer(Timer) OUT -> IN debugToggle(ToggleBoolean) OUT -> IN debugLed(DigitalWrite)
+debugToggle(ToggleBoolean) OUT -> IN debugLed(DigitalWrite) OUT -> IN debugF(Forward)
+# debugTimer(Timer) OUT -> IN debugToggle
+sensorW TRIGGERED -> IN debugToggle
+
 '13' -> PIN debugLed
-'1000' -> INTERVAL debugTimer
+# '2000' -> INTERVAL debugTimer

@@ -1,3 +1,6 @@
 
-micro(runtime/Micro) DISTANCE_NORTH -> IN out(core/Output)
-micro ALIVE -> IN out
+micro(runtime/Micro) ALIVE -> IN out(core/Output)
+micro DISTANCE_NORTH -> IN out
+micro DISTANCE_EAST -> IN out
+micro DISTANCE_SOUTH -> IN out
+micro DISTANCE_WEST -> IN out
