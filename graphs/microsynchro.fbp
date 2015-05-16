@@ -14,7 +14,7 @@ led0(DigitalWrite) OUT -> IN led0f(Forward)
 
 # Config
 '3' -> PIN led0
-'2000' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
+'200' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
 '7' -> TRIGPIN sensor0, '8' -> ECHOPIN sensor0
 
 # Debugging
