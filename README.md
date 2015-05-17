@@ -4,12 +4,15 @@ Experiements in interactive installations around the topic of synchrony,
 how peoples behavior tend to syncronize, and its effect on perception &
 communication.
 
-Prepared for a workshop at [Do It Anyway festival](http://www.opensourcingfestivals.eu/events/do-it-anyway-festival-sheffield-uk)
-around [Flowhub](http://flowhub.io), [MicroFlo](http://microflo) and [sndflo](http://github.com/jonnor/sndflo).
+Prepared for a workshop at [Do It Anyway festival]
+(http://www.opensourcingfestivals.eu/events/do-it-anyway-festival-sheffield-uk).
+[Notes here](./doc/doitanyway-notes.md)
+
+
 
 System overview
 ---------------
-4 ultrasonic distance sensors.
+4 ultrasonic distance sensors. SR04
 A contact speaker with a basin of water mounted on top. Cymatics display.
 An array of LEDs projecting through the water, onto ceiling, screen or other object.
 
