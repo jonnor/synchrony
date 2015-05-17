@@ -35,8 +35,17 @@ sensorW DISTANCE -> IN sensorWf(Forward) # hack, needed for exporting
 '10' -> PIN led4(DigitalWrite)
 '11' -> PIN led5(DigitalWrite)
 
+leds(Split) OUT1 -> IN led0
+leds OUT2 -> IN led1
+leds OUT3 -> IN led2
+leds OUT4 -> IN led3
+leds OUT5 -> IN led4
+leds OUT6 -> IN led5
+
 # Config
-'1000' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
+'true' -> IN leds
+
+'120' -> INTERVAL timer # needs to be at least N sensors (4) * max time (~30ms)
 '8' -> TRIGPIN sensorN, '7' -> ECHOPIN sensorN
 '19' -> TRIGPIN sensorE, '18' -> ECHOPIN sensorE
 '15' -> TRIGPIN sensorS, '14' -> ECHOPIN sensorS

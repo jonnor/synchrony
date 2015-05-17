@@ -21,12 +21,13 @@ var onChange = { |north=0, west=0, south=0, east=0|
     south = (200-south)/200;
     east = (200-east)/200;
     closeness = north*west*south*east;
-    a.set("amp", closeness*2);
+    a.set("freq", 440*closeness);
 };
 
 
 // Standard code here. No need to change things here!
 // Simulator
+/*
 var win = Window.new("Simulator", Rect(200,200,200,200));
 var north = Slider.new(win,Rect(0,30,30,170)).resize_(1);
 var west = Slider.new(win,Rect(30,30,30,170)).resize_(1);
@@ -41,13 +42,14 @@ north.action = onSliderChange;
 west.action = onSliderChange;
 south.action = onSliderChange;
 east.action = onSliderChange;
-win.front;
+*/
+// win.front;
 
 // Real-deal
 OSCFunc.new({ |msg, time, addr, recvPort|
     "OSRC received: ".post; msg.postln;
-    // onChange.value
+    onChange.value(msg[1], msg[2], msg[3], msg[4]);
 }, "/synchrony/change");
 
 // Self-test OSC
-// NetAddr.localAddr.sendMsg("/synchrony/change", "soo");
+// NetAddr.localAddr.sendMsg("/synchrony/change", 20, 20, 20, 20);
