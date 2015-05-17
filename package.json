@@ -25,6 +25,7 @@
     "noflo": "~0.5.0",
     "noflo-core": "^0.1.11",
     "noflo-runtime": "^0.1.4",
+    "osc-min": "^0.2.0",
     "simple-server": "^1.0.1"
   },
   "devDependencies": {
@@ -45,7 +46,8 @@
   "keywords": [],
   "noflo": {
     "components": {
-      "DoSomething": "components/DoSomething.coffee"
+      "DoSomething": "components/DoSomething.coffee",
+      "SendOsc": "components/SendOsc.coffee"
     },
     "runtimes": [
       {

@@ -1,0 +1,6 @@
+micro(runtime/Micro) ALIVE -> IN out(core/Output)
+micro DISTANCE_NORTH -> NORTH send(SendOsc)
+micro DISTANCE_EAST -> EAST send
+micro DISTANCE_SOUTH -> SOUTH send
+micro DISTANCE_WEST -> WEST send
+send OUT -> IN out
