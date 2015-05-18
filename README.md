@@ -6,8 +6,7 @@ communication.
 
 Prepared for a workshop at [Do It Anyway festival]
 (http://www.opensourcingfestivals.eu/events/do-it-anyway-festival-sheffield-uk).
-[Notes here](./doc/doitanyway-notes.md)
-
+[Notes here](./doc/doitanywayfestival.md)
 
 
 System overview
