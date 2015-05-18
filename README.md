@@ -9,21 +9,6 @@ Prepared for a workshop at [Do It Anyway festival]
 [Notes here](./doc/doitanywayfestival.md)
 
 
-System overview
----------------
-4 ultrasonic distance sensors. SR04
-A contact speaker with a basin of water mounted on top. Cymatics display.
-An array of LEDs projecting through the water, onto ceiling, screen or other object.
-
-Arduino to drive LEDs, and perform read-out of distance sensors.
-Raspberry Pi + USB soundcard for sound synthesis.
-RPi also runs the orchestation code, which acts on the sensor inputs and
-controls outputs to form some sort of interactivity.
-
-TODO: picture/3d-model
-TODO: link to interactive simulator
-
-
 Conceptual references
 --------------------
 
@@ -87,6 +72,23 @@ the person will often adopt their breath to match
 [WikiHow: Persuade with subconcious techniques](http://www.wikihow.com/Persuade-People-with-Subconscious-Techniques),
 [Lifehacker: Use mirroring and matchin](http://lifehacker.com/5894462/use-mirroring-and-matching-to-build-a-good-rapport-and-become-more-persuasive)
 
+
+System overview
+---------------
+4 ultrasonic distance sensors. SR04
+A contact speaker with a basin of water mounted on top. Cymatics display.
+An array of LEDs projecting through the water, onto ceiling, screen or other object.
+
+Arduino to drive LEDs, and perform read-out of distance sensors.
+Raspberry Pi + USB soundcard for sound synthesis.
+RPi also runs the orchestation code, which acts on the sensor inputs and
+controls outputs to form some sort of interactivity.
+
+!["3d-model of complete system"](./models/export/box-visualization-1.png)
+
+TODO: link to interactive simulator
+
+
 Interaction ideas
 ---------------------
 Just a start, for inspiration!
@@ -136,3 +138,20 @@ Pushing MicroFlo, sndflo, NoFlo and Flowhub onwards.
 Exploring the idea of "software defined" in interactive/installations:
 The software is what causes it to mean a particular thing.
 
+TODO
+-----
+
+0.1
+
+* Add a top part of the box, with projection screen (paper/plastic/cloth)
+* Make SuperCollider simulator UI clearer. Put sliders in a cross.
+* Move common/infrastructure SuperCollider code into separate file
+* Make sure custom code can be evaled in one-go
+* Don't spawn new UI window every time
+
+1.0
+
+* Use FBP protocol instead of/addition to OpenSoundControl
+* Replicate simulator UI in browser
+* Use sndflo for the sound generation
+* Use NoFlo for the interaction mapping to sound/visual params
