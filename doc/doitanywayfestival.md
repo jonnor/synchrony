@@ -37,9 +37,9 @@ on a English pendant [Ocarina](http://wikipedia.org/Ocarina).
 To make a particular note, have to have a certain distance on
 all 4 holes.
 
-Kadinski figures
+Kadinsky figures
 ----------------
-!["Kadinski figures concept sketch"](./doitanyway-concept-kadinski.jpg)
+!["Kadinsky figures concept sketch"](./doitanyway-concept-kadinsky.jpg)
 
 Position of participants (distance to sensor) form geometric figures:
 3 matching distances becomes a triangle, 4 ueven distances become rectangle,
