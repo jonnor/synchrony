@@ -141,17 +141,24 @@ The software is what causes it to mean a particular thing.
 TODO
 -----
 
-0.1
+0.5 - MsgFlo enabled
 
-* Add a top part of the box, with projection screen (paper/plastic/cloth)
-* Make SuperCollider simulator UI clearer. Put sliders in a cross.
-* Move common/infrastructure SuperCollider code into separate file
-* Make sure custom code can be evaled in one-go
-* Don't spawn new UI window every time
+Software
 
-1.0
+* Let `microflo runtime` implement MQTT/Msgflo directly
+* Let sndflo have MsgFlo support directly in JavaScript. SuperCollider only for synth/sound-gen
+* Interaction mapping done in NoFlo, as a pure-function of State and Inputs
+* Use Msgflo and noflo-runtime-msgflo to connect interaction to output
 
-* Use FBP protocol instead of/addition to OpenSoundControl
-* Replicate simulator UI in browser
-* Use sndflo for the sound generation
-* Use NoFlo for the interaction mapping to sound/visual params
+Simulator
+
+* Make in browser with two parts, interaction control inputs and output visualization UI 
+* Support reflecting the real data, using MQTT/msgflo-browser
+* Support full simulator, where inputs go through logic and to the output vis directly
+* Support partial sim, where inputs send through logic and to the real output unit
+
+Interaction
+
+* Implement some 'pause' animations, for drawing attention. "come closer"
+* Implement intensity buildup when getting closer
+* Implement positive feedback for when syncronized
